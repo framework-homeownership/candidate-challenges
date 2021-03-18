@@ -1,0 +1,32 @@
+[
+  {
+    "contentId": "5a33d150-81eb-11eb-8dcd-0242ac130003",
+    "title": "Lord of the Rings",
+    "contentType": "FANTASY"
+  },
+  {
+    "contentId": "5a33d42a-81eb-11eb-8dcd-0242ac130003",
+    "title": "The Raven",
+    "contentType": "POETRY"
+  },
+  {
+    "contentId": "5a342c2c-81eb-11eb-8dcd-0242ac130003",
+    "title": "The Hobbit",
+    "contentType": "FANTASY"
+  },
+  {
+    "contentId": "5a342db2-81eb-11eb-8dcd-0242ac130003",
+    "title": "Silent Spring",
+    "contentType": "NONFICTION"
+  },
+  {
+    "contentId": "338e2efc-8749-11eb-8dcd-0242ac130003",
+    "title": "Evicted",
+    "contentType": "NONFICTION"
+  },
+  {
+    "contentId": "5a342ec0-81eb-11eb-8dcd-0242ac130003",
+    "title": "The Two Towers",
+    "contentType": "FANTASY"
+  }
+]
