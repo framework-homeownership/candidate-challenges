@@ -1,5 +1,5 @@
 # Exercise Questions
-This is the second part of the take home exericse, intended to be completed after the coding challenge. If you have not yet completed the coding challenge, start by following the instructions in the [Code challenge README](https://github.com/framework-homeownership/candidate-challenges/blob/main/challenge/README.md) in the `challenge/` directory of this repository and return to this section after.
+This is the second part of the take home exercise, intended to be completed after the coding challenge. If you have not yet completed the coding challenge, start by following the instructions in the [Code challenge README](https://github.com/framework-homeownership/candidate-challenges/blob/main/challenge/README.md) in the `challenge/` directory of this repository and return to this section after.
 
 This part of the exercise will provide a theoretical scenario, building off of the work you have done for the coding exercise, and ask some questions around that scenario.
 
