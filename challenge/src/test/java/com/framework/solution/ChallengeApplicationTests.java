@@ -28,16 +28,17 @@ class ChallengeApplicationTests {
 
 	@Test
 	void getAllContents(){
-		//String evictedId = "338e2efc-8749-11eb-8dcd-0242ac130003"
 		getSeededLibrary();
 	}
 
 	@Test
 	void addContent(){
+		String title = "The Return of the King";
 		Library library = getSeededLibrary();
 
-		library.addContent(new Content(new UUID(0, 100), "The Return of the King", ContentType.FANTASY));
+		library.addContent(new Content(new UUID(0, 100), title, ContentType.FANTASY));
 		assert(library.getAllContents().size() == 7);
+		//assert(library.findAny(c -> c.getTitle().equals(title)));
 	}
 
 	@Test
@@ -46,9 +47,7 @@ class ChallengeApplicationTests {
 		UUID testUUID = UUID.fromString("5a33d150-81eb-11eb-8dcd-0242ac130003");
 		library.deleteContentById(testUUID);
 
-		//assert(library.getAllContents().size() == 5);
-		List<Content> alteredContent = library.getAllContents();
-		System.out.println(alteredContent);
+		assert(library.getAllContents().size() == 5);
 		for(Content content : library.getAllContents()){
 			if(content.getContentId().equals(testUUID)){
 				fail("testUUID " + testUUID + " found despite delete");
@@ -56,4 +55,17 @@ class ChallengeApplicationTests {
 		}
 	}
 
+	@Test
+	void countContentByType(){
+		Library library = getSeededLibrary();
+		int poetryCount = library.countContentByType(ContentType.POETRY);
+		assert(poetryCount == 1);
+	}
+
+	@Test
+	void getContentsByType(){
+		Library library = getSeededLibrary();
+		List<Content> fantasyContent = library.getContentsByType(ContentType.FANTASY);
+		assert(fantasyContent.size() == 3);
+	}
 }
