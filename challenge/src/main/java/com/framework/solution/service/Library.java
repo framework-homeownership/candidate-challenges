@@ -14,11 +14,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class Library implements ILibrary {
-  final String filePath = "E:\\Practice\\FrameworkHomeOwnership\\candidate-challenges\\challenge\\src\\main\\resources\\content.json";
+  final String filePath = "./src/main/resources/content.json";
+
   // some way to read a JSON file
   List<Content> allContent = new ArrayList<Content>();
   List<Content> initialContent = new ArrayList<Content>();
