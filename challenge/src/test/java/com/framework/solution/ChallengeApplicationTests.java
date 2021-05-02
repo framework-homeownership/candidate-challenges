@@ -37,8 +37,9 @@ class ChallengeApplicationTests {
 		Library library = getSeededLibrary();
 
 		library.addContent(new Content(new UUID(0, 100), title, ContentType.FANTASY));
-		assert(library.getAllContents().size() == 7);
-		//assert(library.findAny(c -> c.getTitle().equals(title)));
+		List<Content> updatedContent = library.getAllContents();
+		assert(updatedContent.size() == 7);
+		assert(updatedContent.stream().anyMatch(c -> c.getTitle().equals(title)));
 	}
 
 	@Test
