@@ -7,21 +7,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.framework.solution.enums.ContentType;
 import com.framework.solution.model.Content;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
 @Service
 public class Library implements ILibrary {
-  final String filePath = "../candidate-challenges/challenge/src/main/resources/content.json";
+  final String filePath = "E:\\Practice\\FrameworkHomeOwnership\\candidate-challenges\\challenge\\src\\main\\resources\\content.json";
   // some way to read a JSON file
   List<Content> allContent = new ArrayList<Content>();
   List<Content> initialContent = new ArrayList<Content>();
@@ -35,7 +31,7 @@ public class Library implements ILibrary {
     ObjectMapper objectMapper = new ObjectMapper();
     List<Content> initialContent;
     try {
-      initialContent = objectMapper.readValue(filePath, new TypeReference<List<Content>>(){});
+      initialContent = objectMapper.readValue(new File(filePath), new TypeReference<List<Content>>(){});
       return initialContent;
     } catch (JsonParseException e) {
       e.printStackTrace();
