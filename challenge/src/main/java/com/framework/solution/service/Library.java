@@ -2,17 +2,24 @@ package com.framework.solution.service;
 
 import com.framework.solution.enums.ContentType;
 import com.framework.solution.model.Content;
+
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class Library implements ILibrary {
 
+  private final ConcurrentMap<UUID, Content> repository = new ConcurrentHashMap<>();
+
   // Adds Content to the Library, not the JSON file
   @Override
   public Content addContent(Content content) {
-    return null;
+    repository.putIfAbsent(content.getContentId(), content);
+    return content;
   }
 
   // Deletes Content from the Library, not the JSON file
