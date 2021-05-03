@@ -19,15 +19,18 @@ class LibraryTest {
         // @SpringBootTest, which is why we won't use Dependency Injection
         libraryService = new Library();
     }
+
+    // TODO: Need a test/business decision for the scenario when we call add content and the ID already exists in the repo.
+
     @Test
     void addContent() {
         // given
         UUID uuid = UUID.randomUUID();
         Content unsavedContent = Content.builder()
-            .contentId(uuid)
-            .contentType(ContentType.AUDIO)
-            .title("Drake - Thank Me Later")
-            .build();
+                                        .contentId(uuid)
+                                        .contentType(ContentType.AUDIO)
+                                        .title("Drake - Thank Me Later")
+                                        .build();
 
         // when
         Content savedContent = libraryService.addContent(unsavedContent);
@@ -42,12 +45,25 @@ class LibraryTest {
         // given
         UUID uuid = UUID.randomUUID();
         Content unsavedContent = Content.builder()
-            .contentId(uuid)
-            .contentType(ContentType.AUDIO)
-            .title("Drake - Thank Me Later")
-            .build();
+                                        .contentId(uuid)
+                                        .contentType(ContentType.AUDIO)
+                                        .title("Drake - Thank Me Later")
+                                        .build();
         libraryService.addContent(unsavedContent);
         assertEquals(1, libraryService.getAllContents().size());
+
+        // when
+        libraryService.deleteContentById(uuid);
+
+        // then
+        assertEquals(0,libraryService.getAllContents().size());
+    }
+
+    @Test
+    void deleteContentsByIdShouldNotFailWhenObjectDoesNotExist() {
+        // given
+        UUID uuid = UUID.randomUUID();
+        assertEquals(0, libraryService.getAllContents().size());
 
         // when
         libraryService.deleteContentById(uuid);
