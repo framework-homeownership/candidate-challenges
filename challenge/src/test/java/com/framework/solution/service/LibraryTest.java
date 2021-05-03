@@ -32,6 +32,7 @@ class LibraryTest {
 
         // then
         assertEquals(unsavedContent, savedContent);
+        assertEquals(1, libraryService.getAllContents().size());
     }
 
     @Test
