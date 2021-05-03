@@ -76,20 +76,78 @@ class LibraryTest {
 
   @Test
   void countContentByType() {
-    // given
+// given
+    Content audioContent1 = Content.builder()
+        .contentId(UUID.randomUUID())
+        .contentType(ContentType.AUDIO)
+        .title("Drake - Thank Me Later")
+        .build();
+    libraryService.addContent(audioContent1);
+
+    Content audioContent2 = Content.builder()
+        .contentId(UUID.randomUUID())
+        .contentType(ContentType.AUDIO)
+        .title("Drake - Take Care")
+        .build();
+    libraryService.addContent(audioContent2);
+
+    Content content3 = Content.builder()
+        .contentId(UUID.randomUUID())
+        .contentType(ContentType.VIDEO)
+        .title("The Hangover")
+        .build();
+    libraryService.addContent(content3);
+
+    Content content4 = Content.builder()
+        .contentId(UUID.randomUUID())
+        .contentType(ContentType.POETRY)
+        .title("The Raven - Edgar Allan Poe")
+        .build();
+    libraryService.addContent(content4);
 
     // when
-
     // then
+    assertEquals(2, libraryService.countContentByType(ContentType.AUDIO));
+    assertEquals(1, libraryService.countContentByType(ContentType.POETRY));
+    assertEquals(1, libraryService.countContentByType(ContentType.VIDEO));
   }
 
   @Test
   void getAllContents() {
-    // given
+// given
+    Content audioContent1 = Content.builder()
+        .contentId(UUID.randomUUID())
+        .contentType(ContentType.AUDIO)
+        .title("Drake - Thank Me Later")
+        .build();
+    libraryService.addContent(audioContent1);
+
+    Content audioContent2 = Content.builder()
+        .contentId(UUID.randomUUID())
+        .contentType(ContentType.AUDIO)
+        .title("Drake - Take Care")
+        .build();
+    libraryService.addContent(audioContent2);
+
+    Content content3 = Content.builder()
+        .contentId(UUID.randomUUID())
+        .contentType(ContentType.VIDEO)
+        .title("The Hangover")
+        .build();
+    libraryService.addContent(content3);
+
+    Content content4 = Content.builder()
+        .contentId(UUID.randomUUID())
+        .contentType(ContentType.POETRY)
+        .title("The Raven - Edgar Allan Poe")
+        .build();
+    libraryService.addContent(content4);
 
     // when
+    List<Content> allContentsList = libraryService.getAllContents();
 
     // then
+    assertEquals(4, allContentsList.size());
   }
 
   @Test
@@ -101,18 +159,21 @@ class LibraryTest {
         .title("Drake - Thank Me Later")
         .build();
     libraryService.addContent(audioContent1);
+
     Content audioContent2 = Content.builder()
         .contentId(UUID.randomUUID())
         .contentType(ContentType.AUDIO)
         .title("Drake - Take Care")
         .build();
     libraryService.addContent(audioContent2);
+
     Content content3 = Content.builder()
         .contentId(UUID.randomUUID())
         .contentType(ContentType.VIDEO)
         .title("The Hangover")
         .build();
     libraryService.addContent(content3);
+
     Content content4 = Content.builder()
         .contentId(UUID.randomUUID())
         .contentType(ContentType.POETRY)
