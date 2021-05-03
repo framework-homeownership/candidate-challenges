@@ -3,6 +3,7 @@ package com.framework.solution.service;
 import com.framework.solution.enums.ContentType;
 import com.framework.solution.model.Content;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -35,7 +36,7 @@ public class Library implements ILibrary {
 
   @Override
   public List<Content> getAllContents() {
-    return null;
+    return new ArrayList<>(repository.values());
   }
 
   @Override
