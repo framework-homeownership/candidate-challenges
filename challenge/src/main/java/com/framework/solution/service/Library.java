@@ -19,6 +19,7 @@ public class Library implements ILibrary {
   // Adds Content to the Library, not the JSON file
   @Override
   public Content addContent(Content content) {
+    // TODO: There's no instruction on whether or not to replace an existing record/object for a given ID. Maybe we can ask this questions or just implement something from a design decision.
     repository.putIfAbsent(content.getContentId(), content);
     return content;
   }
@@ -26,7 +27,7 @@ public class Library implements ILibrary {
   // Deletes Content from the Library, not the JSON file
   @Override
   public void deleteContentById(UUID id) {
-
+    repository.remove(id);
   }
 
   @Override
