@@ -5,6 +5,7 @@ import com.framework.solution.model.Content;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -16,6 +17,11 @@ import org.springframework.stereotype.Service;
 public class Library implements ILibrary {
 
   private final ConcurrentMap<UUID, Content> repository = new ConcurrentHashMap<>();
+
+  // Decided to use Java's Optional NPE Handling here.
+  public Optional<Content> findById(UUID id) {
+    return Optional.ofNullable(repository.get(id));
+  }
 
   // Adds Content to the Library, not the JSON file
   @Override
@@ -33,7 +39,7 @@ public class Library implements ILibrary {
 
   @Override
   public int countContentByType(ContentType contentType) {
-    return 0;
+    return this.getContentsByType(contentType).size();
   }
 
   @Override

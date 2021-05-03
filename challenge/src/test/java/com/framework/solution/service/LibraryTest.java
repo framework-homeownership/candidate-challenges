@@ -6,10 +6,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LibraryTest {
 
@@ -23,6 +25,27 @@ class LibraryTest {
   }
 
   // TODO: Need a test/business decision for the scenario when we call add content and the ID already exists in the repo.
+
+  @Test
+  void findById() {
+    // given
+    UUID uuid = UUID.randomUUID();
+    Content unsavedContent = Content.builder()
+        .contentId(uuid)
+        .contentType(ContentType.AUDIO)
+        .title("Drake - Thank Me Later")
+        .build();
+
+    Content savedContent = libraryService.addContent(unsavedContent);
+
+    // when
+    Optional<Content> queriedContent = libraryService.findById(uuid);
+
+    // then
+    assertTrue(queriedContent.isPresent());
+    assertEquals(savedContent, queriedContent.get());
+    assertFalse(libraryService.findById(UUID.randomUUID()).isPresent());
+  }
 
   @Test
   void addContent() {
@@ -114,7 +137,7 @@ class LibraryTest {
 
   @Test
   void getAllContents() {
-// given
+    // given
     Content audioContent1 = Content.builder()
         .contentId(UUID.randomUUID())
         .contentType(ContentType.AUDIO)
