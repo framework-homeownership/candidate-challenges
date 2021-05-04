@@ -2,6 +2,7 @@ package com.framework.solution.service;
 
 import com.framework.solution.enums.ContentType;
 import com.framework.solution.model.Content;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,6 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
-
-import org.springframework.stereotype.Service;
 
 @Service
 public class Library implements ILibrary {
@@ -50,8 +49,8 @@ public class Library implements ILibrary {
   @Override
   public List<Content> getContentsByType(ContentType contentType) {
     return repository.values()
-                     .stream()
-                     .filter(content -> content.getContentType().equals(contentType))
-                     .collect(Collectors.toList());
+        .stream()
+        .filter(content -> content.getContentType().equals(contentType))
+        .collect(Collectors.toList());
   }
 }
