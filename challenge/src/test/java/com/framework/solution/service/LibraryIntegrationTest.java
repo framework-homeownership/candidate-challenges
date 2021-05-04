@@ -16,6 +16,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 // Integration Tests with the Full Spring Context & Data From Content.json
@@ -48,24 +49,6 @@ public class LibraryIntegrationTest {
     assertTrue(queriedContent.isPresent());
     assertEquals(expected, queriedContent.get());
     assertFalse(libraryService.findById(UUID.randomUUID()).isPresent());
-  }
-
-  @Test
-  void addContent() {
-//    // given
-//    UUID uuid = UUID.randomUUID();
-//    Content unsavedContent = Content.builder()
-//        .contentId(uuid)
-//        .contentType(ContentType.AUDIO)
-//        .title("Drake - Thank Me Later")
-//        .build();
-//
-//    // when
-//    Content savedContent = libraryService.addContent(unsavedContent);
-//
-//    // then
-//    assertEquals(unsavedContent, savedContent);
-//    assertEquals(1, libraryService.getAllContents().size());
   }
 
   @Test
@@ -116,6 +99,31 @@ public class LibraryIntegrationTest {
 
   @Test
   @Order(5)
+  void attemptToAddContentIdThatAlreadyExists() {
+    // given
+    UUID uuid = UUID.fromString("338e2efc-8749-11eb-8dcd-0242ac130003");
+
+    Content content = Content.builder()
+        .contentId(uuid)
+        .contentType(ContentType.AUDIO)
+        .title("Drake - Thank Me Later")
+        .build();
+
+    // when
+    Content savedContent = libraryService.addContent(content);
+    Optional<Content> opt = libraryService.findById(uuid);
+
+    // then
+    opt.ifPresent(cnt -> {
+      System.out.println(cnt);
+      assertNotEquals(cnt, savedContent);
+    });
+    assertEquals(content, savedContent);
+    assertEquals(6, libraryService.getAllContents().size());
+  }
+
+  @Test
+  @Order(6)
   void deleteContentById() {
     // given
     UUID uuid = UUID.fromString("338e2efc-8749-11eb-8dcd-0242ac130003");
@@ -129,7 +137,7 @@ public class LibraryIntegrationTest {
   }
 
   @Test
-  @Order(6)
+  @Order(7)
   void deleteContentsByIdShouldNotFailWhenObjectDoesNotExist() {
     // given
     UUID uuid = UUID.fromString("338e2efc-8749-11eb-8dcd-0242ac130009");
@@ -141,4 +149,32 @@ public class LibraryIntegrationTest {
     // then
     assertFalse(libraryService.findById(uuid).isPresent());
   }
+
+
+  @Test
+  @Order(8)
+  void attemptToAddContentWithIdThatUseToExists() {
+    // given
+    UUID uuid = UUID.fromString("338e2efc-8749-11eb-8dcd-0242ac130003");
+
+    Content content = Content.builder()
+        .contentId(uuid)
+        .contentType(ContentType.AUDIO)
+        .title("Drake - Thank Me Later")
+        .build();
+
+    // when
+    Content savedContent = libraryService.addContent(content);
+    Optional<Content> opt = libraryService.findById(uuid);
+
+
+    // then
+    opt.ifPresent(cnt -> {
+      System.out.println(cnt);
+      assertEquals(cnt, savedContent);
+    });
+    assertEquals(content, savedContent);
+    assertEquals(6, libraryService.getAllContents().size());
+  }
+
 }
