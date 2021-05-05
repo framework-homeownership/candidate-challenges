@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>8ecb824c-571c-467d-8ab9-f6d987b24359.TABLE:debrief.public.content</OriginalElement>
+  <nodes>
+    <node x="0.0" y="153.0">8ecb824c-571c-467d-8ab9-f6d987b24359.TABLE:debrief.public.user</node>
+    <node x="603.0" y="153.0">8ecb824c-571c-467d-8ab9-f6d987b24359.TABLE:debrief.public.r_content_type</node>
+    <node x="217.0" y="153.0">8ecb824c-571c-467d-8ab9-f6d987b24359.TABLE:debrief.public.content</node>
+    <node x="28.25" y="306.0">8ecb824c-571c-467d-8ab9-f6d987b24359.TABLE:debrief.public.library_resource_tracker</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="8ecb824c-571c-467d-8ab9-f6d987b24359.TABLE:debrief.public.library_resource_tracker" target="8ecb824c-571c-467d-8ab9-f6d987b24359.TABLE:debrief.public.content" relationship="REFERENCES">
+      <point x="90.25" y="-86.0" />
+      <point x="299.0" y="281.0" />
+      <point x="319.0" y="281.0" />
+      <point x="0.0" y="51.5" />
+    </edge>
+    <edge source="8ecb824c-571c-467d-8ab9-f6d987b24359.TABLE:debrief.public.content" target="8ecb824c-571c-467d-8ab9-f6d987b24359.TABLE:debrief.public.r_content_type" relationship="REFERENCES">
+      <point x="0.0" y="-51.5" />
+      <point x="319.0" y="128.0" />
+      <point x="703.0" y="128.0" />
+      <point x="0.0" y="51.5" />
+    </edge>
+    <edge source="8ecb824c-571c-467d-8ab9-f6d987b24359.TABLE:debrief.public.library_resource_tracker" target="8ecb824c-571c-467d-8ab9-f6d987b24359.TABLE:debrief.public.user" relationship="REFERENCES">
+      <point x="-90.25" y="-86.0" />
+      <point x="118.5" y="281.0" />
+      <point x="98.5" y="281.0" />
+      <point x="0.0" y="51.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.4499999999999997" showDependencies="false" x="401.5" y="298.49999999999994" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

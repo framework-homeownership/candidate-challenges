@@ -1,12 +1,12 @@
 package com.framework.solution.enums;
 
 public enum ContentType {
-  FICTION,
+  AUDIO,
   FANTASY,
-  NONFICTION,
+  FICTION,
   HISTORY,
+  NONFICTION,
   POETRY,
   SCHOLARLY_JOURNAL,
-  VIDEO,
-  AUDIO
+  VIDEO
 }

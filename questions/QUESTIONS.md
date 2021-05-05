@@ -9,7 +9,8 @@ This scenario will expand on the work you did for the Library module, but will N
 Now that the code changes to the Library module are complete, you have been tasked with designing a new User service to track which Library resources an individual has checked out, as well as restricting access to users without an account. At a minimum this service will need to be comprised of a new API and new table(s) in a pre-existing RDBMS. The intent is to launch this new service on a cloud provider (of your choice), with the following requirements:
 - Communicates with a backend database.
 - Caching mechanism for data retrieved from RDBMS.
-- Should have redundancy and high availablity.
+    Client-Server (Cloud) Distributed Cache Server (Redis)  Distributed Embedded Cache(Hazlecast) 
+- Should have redundancy and high availability.
 - Calls to API must be authenticated and authorized.
 - Average request load to API expected to be ~50 calls per minute, but with spikes to ~10,000,000 requests per minute a few times per month. These spikes should be handled without manual intervention.
 - After the initial deployments, subsequent ones should be fairly automated.
