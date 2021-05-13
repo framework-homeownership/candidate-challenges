@@ -8,7 +8,7 @@ Framework Homeownership, LLC.
 `git clone git@github.com:/$GITHUB_USERNAME/candidate-challenges.git`
 1. Create a branch off of `main`, using your full name as the branch name.
 `git checkout -b exercise-$GIVEN_NAME-$SURNAME`
-1. Do the exercise, commiting your code changes and question answers.
+1. Do the exercise, committing your code changes and question answers.
 1. Push your commits up to your fork.
 1. Create a Pull Request from your forked repository branch into Framework's repository. Add the following github users to the PR as reviewers:
     1. danscheirer
@@ -31,7 +31,7 @@ This exercise has 2 parts, the first one is a coding challenge that requires som
 
 Some final notes:
 - Keep commits small, there should not just be one big commit at the end with all your code.
-- Limit your time working on this to ~3 hours maximium. Don't spend extra time trying to cover every edge case in testing or expanding the code beyond what is requested.
+- Limit your time working on this to ~3 hours maximum. Don't spend extra time trying to cover every edge case in testing or expanding the code beyond what is requested.
 - If you run into any blockers along the way or need to ask a question, please email both Matt and Dan:
     - <matt@frameworkhomeownership.org>
     - <dan@frameworkhomeownership.org>
